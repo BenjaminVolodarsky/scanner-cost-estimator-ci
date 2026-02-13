@@ -22,6 +22,7 @@ jobs:
           
           mkdir -p dist
           cp upwind dist/
+          cp main.py dist/
           cp README.md dist/
           
           ZIP_NAME="${MAJOR}-${MINOR}-${TAG}.zip"
