@@ -17,10 +17,13 @@ jobs:
       - name: Package Artifact
         run: |
           TAG=${{ github.ref_name }}
-          # Logic to get Major (1) and Minor (1.0) correctly
+          # Removes the 'v' from the tag for cleaner processing
           VERSION_CLEAN=$(echo $TAG | sed 's/v//')
+          
+          # Corrected cut syntax: use -f1 instead of -d. -f1 for clarity
           MAJOR=$(echo $VERSION_CLEAN | cut -d. -f1)
-          MINOR=$(echo $VERSION_CLEAN | cut -d. -f1,f2)
+          # Corrected cut syntax: use -f1,2 to get Major.Minor
+          MINOR=$(echo $VERSION_CLEAN | cut -d. -f1,2)
           
           mkdir -p dist
           cp upwind dist/
