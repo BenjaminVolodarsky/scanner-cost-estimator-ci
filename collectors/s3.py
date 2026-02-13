@@ -109,7 +109,7 @@ def collect_s3_buckets(session, account_id="unknown"):
 
     except Exception as e:
         if "AccessDenied" in str(e):
-            error = "s3:ListBuckets"
+            error = "s3:ListAllMyBuckets"
         else:
             error = str(e)
 

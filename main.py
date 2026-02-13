@@ -195,18 +195,17 @@ Documentation & Updates:
 
 
 def run():
-    RED, YELLOW, CYAN, RESET, BOLD = "\033[91m", "\033[93m", "\033[96m", "\033[0m", "\033[1m"
     try:
         main()
     except botocore.exceptions.NoCredentialsError:
-        print(f"\n{RED}{BOLD}[!] Error:{RESET} {RED}AWS credentials not found.{RESET}")
-        print(f"    {YELLOW}Please run:{RESET} {CYAN}'aws sso login'{RESET} or {CYAN}'aws configure'{RESET}")
+        print(f"\n[!] Error: AWS credentials not found.")
+        print(f"Please run: 'aws sso login' or 'aws configure'")
         sys.exit(1)
     except KeyboardInterrupt:
-        print(f"\r\n{YELLOW}[!] Execution cancelled by user. Exiting...{RESET}")
+        print(f"\r\n[!] Execution cancelled by user. Exiting.")
         sys.exit(0)
     except Exception as e:
-        print(f"\n{RED}{BOLD}[!] Unexpected Error:{RESET} {e}")
+        print(f"\n[!] Unexpected Error:{e}")
         sys.exit(1)
 
 
