@@ -34,8 +34,7 @@ jobs:
           cp -r output dist/
           cp -r utils dist/
           
-          # Naming Convention: Major-Minor-FullTag.zip (e.g., 1-1.0-v1.0.0.zip)
-          ZIP_NAME="${MAJOR}-${MINOR}-${TAG}.zip"
+          ZIP_NAME="${TAG}.zip"
           cd dist && zip -r ../$ZIP_NAME .
           echo "ZIP_PATH=$ZIP_NAME" >> $GITHUB_ENV
 
