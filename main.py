@@ -5,6 +5,7 @@ import logging
 import sys
 import argparse
 import boto3
+import botocore.exceptions
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from utils.regions import list_regions
 from output.writer import write_output
@@ -205,5 +206,22 @@ def main():
     write_output(all_results)
 
 
+def run():
+    try:
+        main()
+    except botocore.exceptions.NoCredentialsError:
+        print("\n[!] Error: AWS credentials not found.")
+        print("    Please run 'aws sso login' or 'aws configure'.")
+        sys.exit(1)
+    except botocore.exceptions.ClientError as e:
+        print(f"\n[!] AWS Client Error: {e}")
+        sys.exit(1)
+    except KeyboardInterrupt:
+        print("\n\n[!] Execution cancelled by user. Exiting...")
+        sys.exit(0)
+    except Exception as e:
+        print(f"\n[!] An unexpected error occurred: {e}")
+        sys.exit(1)
+
 if __name__ == "__main__":
-    main()
+    run()
