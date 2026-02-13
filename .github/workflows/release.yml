@@ -30,9 +30,9 @@ jobs:
           cp main.py dist/
           cp README.md dist/
           cp requirements.txt dist/
-          cp collectors dist/
-          cp output dist/
-          cp utils dist/
+          cp -r collectors dist/
+          cp -r output dist/
+          cp -r utils dist/
           
           # Naming Convention: Major-Minor-FullTag.zip (e.g., 1-1.0-v1.0.0.zip)
           ZIP_NAME="${MAJOR}-${MINOR}-${TAG}.zip"
