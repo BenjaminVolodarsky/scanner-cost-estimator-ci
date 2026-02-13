@@ -23,21 +23,16 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger("CloudScanner")
+logger.setLevel(logging.INFO)
 
 
 def log_info(msg, account_id="SYSTEM"):
     logger.info(msg, extra={'account_id': account_id})
 
-
 def log_warn(msg, account_id="SYSTEM"):
     logger.warning(msg, extra={'account_id': account_id})
 
-
 def get_accounts():
-    """
-    Fetches active member accounts from the organization.
-    Returns None if the caller lacks permissions.
-    """
     try:
         org = boto3.client("organizations")
         accounts = []
@@ -53,7 +48,6 @@ def get_accounts():
 
 
 def get_assumed_session(account_id, role_name):
-    """Assumes role in member account."""
     sts = boto3.client("sts")
     role_arn = f"arn:aws:iam::{account_id}:role/{role_name}"
     try:
@@ -70,7 +64,6 @@ def get_assumed_session(account_id, role_name):
 
 
 def scan_region_logic(session, region, account_id):
-    """Aggregates all regional findings into a single flat list."""
     region_results = []
     region_errors = set()
 
@@ -91,12 +84,12 @@ def scan_region_logic(session, region, account_id):
     return region_results, list(region_errors)
 
 
-def scan_account(account_info, role_name, regions_filter=None, is_runner_node=False):
+def scan_account(account_info, role_name, regions_filter, is_runner_node, progress_prefix):
     account_id = account_info["id"]
     name = account_info["name"]
     suffix = " [Runner Account]" if is_runner_node else ""
 
-    log_info(f"Starting scan for account: {name} ({account_id}){suffix}", account_id)
+    log_info(f"{progress_prefix} Starting scan for: {name} ({account_id}){suffix}", account_id)
 
     if is_runner_node:
         session = boto3.Session()
@@ -144,40 +137,34 @@ def scan_account(account_info, role_name, regions_filter=None, is_runner_node=Fa
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Cloud Scanner & Cost Estimator")
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Documentation & Updates:
+  GitHub: https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci
+  Releases: https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci/releases
+        """
+    )
     parser.add_argument("--role", type=str, default="OrganizationAccountAccessRole",
-                        help="The IAM Role name to assume in member accounts.")
-    parser.add_argument("--accounts", type=str,
-                        help="Comma-separated list of account IDs to scan (bypasses auto-discovery).")
-    parser.add_argument("--regions", type=str,
-                        help="Comma-separated list of regions to scan (e.g., us-east-1,eu-central-1).")
+                        help="IAM Role for member accounts.")
+    parser.add_argument("--accounts", type=str, help="Comma-separated account IDs to scan.")
+    parser.add_argument("--regions", type=str, help="Comma-separated regions to scan.")
     args = parser.parse_args()
-
-    regions_filter = None
-    if args.regions:
-        regions_filter = [r.strip() for r in args.regions.split(",") if r.strip()]
-        log_info(f"Region filter enabled. Restricting scan to: {', '.join(regions_filter)}", "SYSTEM")
 
     sts = boto3.client("sts")
     runner_id = sts.get_caller_identity()["Account"]
 
-    scan_list = []
-
-    # MODE 1: Manual List (Strict)
     if args.accounts:
         ids = [x.strip() for x in args.accounts.split(",") if x.strip()]
         scan_list = [{"id": aid, "name": f"Manual-{aid}"} for aid in ids]
-        log_info(f"Manual mode enabled. Scanning {len(scan_list)} specific accounts.", "SYSTEM")
-
-    # MODE 2: Auto-Discovery
+        log_info(f"Execution Mode: Manual accounts scan ({len(scan_list)} accounts)")
     else:
         accounts = get_accounts()
         if accounts:
-            log_info(f"Organization access detected. Found {len(accounts)} active accounts.", "SYSTEM")
+            log_info(f"Execution Mode: Cross-account scan ({len(accounts)} accounts)")
             scan_list = accounts
         else:
-            # MODE 3: Local Fallback
-            log_info("Organization access unavailable. Defaulting to single-account scan.", "SYSTEM")
+            log_info("Execution Mode: Local account scan (Organization discovery unavailable)")
             scan_list = [{"id": runner_id, "name": "Local-Account"}]
 
     all_results = []
@@ -185,11 +172,13 @@ def main():
     full_success_count = 0
     partial_count = 0
 
-    for acc in scan_list:
-        print("")
+    for index, acc in enumerate(scan_list, start=1):
+        print("")  # Visual separator
+        progress = f"[{index}/{total_accounts}]"
+
         try:
             is_runner = (acc["id"] == runner_id)
-            results = scan_account(acc, args.role, regions_filter, is_runner)
+            results = scan_account(acc, args.role, None, is_runner, progress)
             all_results.extend(results)
 
             if len(results) == 0:
@@ -200,28 +189,26 @@ def main():
             log_warn(f"Failed to scan {acc['name']}: {str(e)}", acc['id'])
 
     print("")
-    log_info(
-        f"Summary: {full_success_count} full scans, {partial_count} partial/empty scans out of {total_accounts} total.",
-        "SYSTEM")
+    log_info(f"Summary: {full_success_count} full scans, {partial_count} partial scans out of {total_accounts} total.",
+             "SYSTEM")
     write_output(all_results)
 
 
 def run():
+    RED, YELLOW, CYAN, RESET, BOLD = "\033[91m", "\033[93m", "\033[96m", "\033[0m", "\033[1m"
     try:
         main()
     except botocore.exceptions.NoCredentialsError:
-        print("\n[!] Error: AWS credentials not found.")
-        print("    Please run 'aws sso login' or 'aws configure'.")
-        sys.exit(1)
-    except botocore.exceptions.ClientError as e:
-        print(f"\n[!] AWS Client Error: {e}")
+        print(f"\n{RED}{BOLD}[!] Error:{RESET} {RED}AWS credentials not found.{RESET}")
+        print(f"    {YELLOW}Please run:{RESET} {CYAN}'aws sso login'{RESET} or {CYAN}'aws configure'{RESET}")
         sys.exit(1)
     except KeyboardInterrupt:
-        print("\n\n[!] Execution cancelled by user. Exiting...")
+        print(f"\r\n{YELLOW}[!] Execution cancelled by user. Exiting...{RESET}")
         sys.exit(0)
     except Exception as e:
-        print(f"\n[!] An unexpected error occurred: {e}")
+        print(f"\n{RED}{BOLD}[!] Unexpected Error:{RESET} {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     run()
