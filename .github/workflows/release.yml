@@ -24,7 +24,7 @@ jobs:
           
           mkdir -p dist
           cp upwind dist/
-          cp main.py dist/      # Explicitly including main.py so the script runs!
+          cp main.py dist/
           cp README.md dist/
           
           # Naming Convention: Major-Minor-FullTag.zip (e.g., 1-1.0-v1.0.0.zip)
