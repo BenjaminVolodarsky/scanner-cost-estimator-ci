@@ -17,14 +17,17 @@ jobs:
       - name: Package Artifact
         run: |
           TAG=${{ github.ref_name }}
-          MAJOR=$(echo $TAG | cut -d. -f1 | tr -d 'v')
-          MINOR=$(echo $TAG | cut -d. -f1,f2 | tr -d 'v')
+          # Logic to get Major (1) and Minor (1.0) correctly
+          VERSION_CLEAN=$(echo $TAG | sed 's/v//')
+          MAJOR=$(echo $VERSION_CLEAN | cut -d. -f1)
+          MINOR=$(echo $VERSION_CLEAN | cut -d. -f1,f2)
           
           mkdir -p dist
           cp upwind dist/
-          cp main.py dist/
+          cp main.py dist/      # Explicitly including main.py so the script runs!
           cp README.md dist/
           
+          # Naming Convention: Major-Minor-FullTag.zip (e.g., 1-1.0-v1.0.0.zip)
           ZIP_NAME="${MAJOR}-${MINOR}-${TAG}.zip"
           cd dist && zip -r ../$ZIP_NAME .
           echo "ZIP_PATH=$ZIP_NAME" >> $GITHUB_ENV
