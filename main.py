@@ -114,8 +114,8 @@ def scan_account(account_info, role_name, regions_filter, is_runner_node, progre
     if regions_filter:
         target_regions = [r for r in available_regions if r in regions_filter]
         if len(target_regions) < len(regions_filter):
-            skipped = set(regions_filter) - set(target_regions)
-            log_info(f"Skipping requested regions not enabled in this account: {', '.join(skipped)}", account_id)
+            skipped = sorted(list(set(regions_filter) - set(target_regions)))
+            log_info(f"[!] Restricted: Skipping disabled regions: {', '.join(skipped)}", account_id)
     else:
         target_regions = available_regions
 
@@ -172,13 +172,18 @@ Documentation & Updates:
     full_success_count = 0
     partial_count = 0
 
+    regions_list = [r.strip() for r in args.regions.split(",")] if args.regions else None
+    if args.regions:
+        clean_regions = ", ".join(regions_list)
+        log_info(f"Target Regions: [{clean_regions}]")
+
     for index, acc in enumerate(scan_list, start=1):
         print("")  # Visual separator
         progress = f"[{index}/{total_accounts}]"
 
         try:
             is_runner = (acc["id"] == runner_id)
-            results = scan_account(acc, args.role, None, is_runner, progress)
+            results = scan_account(acc, args.role, regions_list, is_runner, progress)
             all_results.extend(results)
 
             if len(results) == 0:
