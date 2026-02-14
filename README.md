@@ -1,13 +1,15 @@
 # AWS Workload Cost Estimator
 
-This tool estimates the amount of scannable AWS resources in an organization.
-The results can later be used for cost prediction and capacity planning.
+This tool estimates the number of scannable AWS resources in an organization,  
+which can then be used for cost prediction and capacity planning.
+
 
 - Read-Only: All API calls are non-mutating and do not modify any resources.
 - AWS Native: No API calls are made outside of the AWS environment.
-- Execution is recommended via a [dedicated Permission Boundary]() to ensure the principle of least privilege.
+- Execution is recommended via a [dedicated Permission Boundary](#least-privilege-permission-boundary-recommended) to ensure the principle of least privilege.
+- The tool performs metadata discovery through AWS control-plane APIs only.
 
-More about required roles and policies can be found in the [Permissions](#least-privilege-permission-boundary-recommended) section.
+More details about required roles and policies can be found in the [Permissions](#permissions) section.
 
 ---
 
@@ -25,13 +27,14 @@ More about required roles and policies can be found in the [Permissions](#least-
 
 - Python 3.9+
 - Boto3 (pip install boto3)
-- AWS Credentials configured for the runner identity.
+- AWS credentials configured for the runner identity.
 
 ---
 
 ## Permissions
 
-#### The script uses a cross-account IAM role to scan member accounts. By default, it looks for the OrganizationAccountAccessRole, but this can be customized via [flags](#flags).
+The script uses a cross-account IAM role to scan member accounts.
+By default, it looks for `OrganizationAccountAccessRole`, but this can be customized via [flags](#flags).
 - More details regarding the default **cross-account role** and accessing member accounts in an organization can be found here:
 [Documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html).
 
@@ -45,22 +48,26 @@ More about required roles and policies can be found in the [Permissions](#least-
 | **Auto Scaling** | `DescribeAutoScalingGroups` | <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingGroups.html" target="_blank">DescribeAutoScalingGroups</a>                                                                     |
 | **Lambda** | `ListFunctions`             | <a href="https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctions.html" target="_blank">ListFunctions</a>                                                                                                          |
 | **S3** | `ListAllMyBuckets`          | <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html" target="_blank">ListBuckets</a>                                                                                                               |
-| **S3** | `GetBucketLocation`         | <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html" target="_blank">HeadBucket</a>                                                                                                                |
+| **S3** | `ListBucket`                | <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html" target="_blank">HeadBucket</a>                                                                                                                |
 | **CloudWatch** | `GetMetricData`             | <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html" target="_blank">GetMetricData</a>                                                                                       |
 
 
-Notice: in order to perform a full multi-account scan, the runner account (management account or a member account that is a delegated administrator) must have the following permissions:
+To perform a full multi-account scan, the runner account (management account or a member account that is a delegated administrator) must have the following permissions:
 - organizations:ListAccounts [ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html)
 - sts:AssumeRole [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
 ### Least Privilege Permission Boundary (Recommended)
 
-We highly recommend running the script with a Permission Boundary attached to the **cross-account role**.
-You can use an AWS managed policy or a customer managed policy to set the boundary for an IAM entity (user or role). That policy limits the maximum permissions for the user or role.
-You can attach this policy to the role you choose to run the script with. In order to create the policy:
+We strongly recommend attaching a Permission Boundary to the execution role.
 
-#### 1. Create an IAM Policy with the defined permissions ceiling (you can use the example JSON below).
+A permission boundary defines the maximum allowed permissions, regardless of other policies attached to the role.
+This ensures the script remains read-only even if broader permissions are later granted.
 
-#### 2. In the IAM Console, under Roles tab, choose the role you want to attach the policy to, and attach it under the "Permissions boundary" tab.
+You may use either an AWS-managed or a customer-managed policy.
+
+### Implementation Steps
+#### 1. Create an IAM policy that defines the permissions ceiling (example below).
+
+#### 2. In the IAM Console → Roles → select the execution role → attach the policy under Permissions boundary.
 
 **Example Policy JSON:**
 
@@ -78,7 +85,7 @@ You can attach this policy to the role you choose to run the script with. In ord
                 "autoscaling:DescribeAutoScalingGroups",
                 "lambda:ListFunctions",
                 "s3:ListAllMyBuckets",
-                "s3:GetBucketLocation",
+                "s3:ListBucket",
                 "cloudwatch:GetMetricData"
             ],
             "Resource": "*"
@@ -105,57 +112,93 @@ pip install boto3
 ```bash
 ./upwind
 ```
-* The tool can perform a cross-account scan by running the script without any arguments. The script will use the default cross-account role name (OrganizationAccountAccessRole) to scan all active member accounts in the organization.
-* The tool will inform that it is performing a cross-account scan, and print the amount of accounts it is revealed.
-* The tool will scan all active member accounts in the organization, and will print permission exceptions if any.
-* The tool will produce a JSON file containing the data about the resources it collected from each account.
+Runs automatically when executed without arguments.
+* Uses the default role `OrganizationAccountAccessRole`.
+* Displays the number of accounts discovered.
+* Reports permission failures per account.
+* Produces a JSON output file with collected resources.
 
-*Cross-account scan is only available if the runner account is a management account or a member account that is a delegated administrator. If the tool wouldn't be able to perform 
-[ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html), it will automatically switch to the local account scan option, and scan only the account it been executed from.*
+* If the runner cannot call `organizations:ListAccounts`, the tool falls back to a local scan.
+
 ### 2. Local account scan:
 ```bash
 ./upwind
 ```
-* The tool will perform a local scan by running the script without any arguments. The script will switch to local scan as it won't be able to perform 
-[ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html).
-  * Notice: if the runner account is a management account or a member account that is a delegated administrator, the tool will perform a cross-account scan. If you are willing to perform a local scan on member/administrator accounts, you **must** use the --accounts flag.
-* The tool will inform you that Organization access unavailable (single-account scan)
-* The tool will produce a JSON file containing the data about the resources it collected from the local account.
+Runs when organization access is unavailable.
+* Scans only the account where the tool is executed.
+* Produces a JSON file with the collected resources.
+* If the runner is a management or delegated administrator account, cross-account scan will run by default.
+To force local behavior, use the `--accounts` flag.
 
 ### 3. Manual accounts scan:
 ```bash
 ./upwind --accounts <account_id>
 ```
-
-* You can perform a multi-account scan even from a member account by using the --accounts flag. This flag bypasses the 
-[ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html) call, and only scans the account you specified.
-* The tool will produce a JSON file containing the data about the resources it collected from the accounts you specified.
-
-*The runner account don't have to be a management account,
-but it still has to have the sts:AssumeRole [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) 
-permission to perform the scan.*
-
-*A trust relationship must be configured on the target role , granting the runner account permission to assume the role via sts:AssumeRole.*
+Allows scanning specific accounts from any runner.
+* Bypasses the ListAccounts API.
+* Only the specified accounts are scanned.
+* **The runner account is scanned only if included in the list.**
+* Produces a JSON file with the collected resources.
 
 ## Flags:
 ### You can use the following flags to customize the scan:
-### --accounts <account_id>
-* You can use this flag to specify a list of accounts to scan.
-* It will bypass the Cross-account scan and will not perform a
-[ListAccounts](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListAccounts.html) call. Instead, it will perform a Local account scan (if you only specify the runner account in the list), or a Manual accounts scan (using sts:assumeRole). 
-* The runner account in this mode wouldn't be scanned without being specified in the list.
+### --accounts <id1,id2,...>
+Specify which accounts should be scanned.
+* Skips organization discovery.
+* The runner account will not be scanned unless explicitly listed.
+
+Example:
 ```bash
-./upwind --accounts <account_id1>,<account_id2>
+./upwind --accounts 111111111111,222222222222
 ```
 ### --role <role_name>
-This flag allows you to specify a role to assume in the target accounts. It would not be used on Local account scan. 
+Specify a custom role name to assume in target accounts.
+Not used during a local account scan. 
 ```bash
-./upwind --role <role_name>
+./upwind --role MyCustomRole
 ```
 
-### --region <region>
-This flag allows you to specify a list of regions to scan (on all the accounts). 
+### --region <region1,region2,...>
+Specify which regions should be scanned across the selected accounts. 
+* Disabled regions are skipped.
+* Even if `ec2:DescribeRegions` is unavailable, the explicitly provided regions are still scanned.
 ```bash
 ./upwind --region us-east-1,eu-west-1
 ```
 
+## Troubleshooting:
+**_If runtime exceptions are detected in more than 10 accounts, a file named:_**
+**_audit_report.txt_** will be generated.
+
+### Missing `lambda:ListFunctions`
+  * Affects: Lambda functions will not be collected.
+  * Solution: Grant
+    * `lambda:ListFunctions`
+
+### Missing `autoscaling:DescribeAutoScalingGroups`
+  * Affects: Auto Scaling groups will not be collected.
+    * _Note: since the tool excludes EC2 instances tagged with AutoScalingGroup, those instances will be absent from the report._
+  * Solution: Grant
+    * `autoscaling:DescribeAutoScalingGroups`
+
+### Missing `ec2:DescribeInstances`
+  * Affects: EC2 instances will not be collected.
+  * Solution: Grant
+    * `ec2:DescribeInstances`
+### Missing `ec2:DescribeRegions`
+  * Affects: Region discovery may be incomplete.
+  * If a region is not an AWS default region and not provided via --region, it will be skipped. [Docs](https://docs.aws.amazon.com/controltower/latest/userguide/opt-in-region-considerations.html)
+  * Solution: Grant
+    * `ec2:DescribeRegions`
+### Missing `ec2:DescribeVolumes`
+  * Affects: EBS volumes will not be collected.
+  * Solution: Grant
+    * `ec2:DescribeVolumes`
+### Missing `s3:ListAllMyBuckets`
+  * Affects: S3 buckets will not be collected.
+  * Solution: Grant
+    * `s3:ListAllMyBuckets`
+### Missing `s3:ListBucket`
+  * Affects: If HeadBucket fails, the tool attempts to infer the region from the error response. If that also fails, the bucket is marked as unknown region, and related metrics are skipped.
+  * Solution: Grant
+    * `s3:ListBucket`

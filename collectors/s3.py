@@ -1,48 +1,63 @@
 from datetime import datetime, timedelta
+import logging
+import botocore
 from utils.config_helper import get_client
 
+logger = logging.getLogger("CloudScanner")
 
 def collect_s3_buckets(session, account_id="unknown"):
     s3 = get_client(session, "s3")
     results = []
-    error = None
+    error = None # Will store 's3:ListAllMyBuckets' or 's3:ListBucket'
     buckets_by_region = {}
+    skipped_buckets = []
+    fetched_count = 0
 
     try:
-        # Step 1: Create a paginator for list_buckets
         paginator = s3.get_paginator('list_buckets')
-
         now = datetime.utcnow()
         start_time = now - timedelta(days=2)
 
-        # Step 2: Iterate through every page of buckets
-        # This handles accounts with > 10,000 buckets automatically
         for page in paginator.paginate():
             for b in page.get("Buckets", []):
                 name = b["Name"]
+                region = None
+
                 try:
-                    region = s3.head_bucket(Bucket=name).get('ResponseMetadata', {}).get('HTTPHeaders', {}).get(
-                        'x-amz-bucket-region', 'us-east-1')
-                except:
-                    region = 'us-east-1'
+                    response = s3.head_bucket(Bucket=name)
+                    region = response.get('ResponseMetadata', {}).get('HTTPHeaders', {}).get('x-amz-bucket-region')
+                except botocore.exceptions.ClientError as e:
+                    # Attempt to extract region from error headers
+                    region = e.response.get('Error', {}).get('Region') or \
+                             e.response.get('ResponseMetadata', {}).get('HTTPHeaders', {}).get('x-amz-bucket-region')
 
-                if region not in buckets_by_region:
-                    buckets_by_region[region] = []
-                buckets_by_region[region].append(name)
+                if region:
+                    fetched_count += 1
+                    if region == "EU": region = "eu-west-1"
+                    if region not in buckets_by_region:
+                        buckets_by_region[region] = []
+                    buckets_by_region[region].append(name)
+                else:
+                    skipped_buckets.append(name)
 
+        # Only notify if there are actual skips
+        if skipped_buckets:
+            logger.info(
+                f"s3:HeadBucket failed to resolve {len(skipped_buckets)} regions (Fetched: {fetched_count}). "
+                f"Action required: add 's3:ListBucket' permission.",
+                extra={'account_id': account_id}
+            )
+            error = "s3:ListBucket"
+
+        # Step 2: Regional CloudWatch Queries
         for region, bucket_names in buckets_by_region.items():
             cw = get_client(session, "cloudwatch", region_name=region)
-
-            # Each GetMetricData call supports up to 500 queries
-            # Since we fetch 2 metrics per bucket (Size and Count), we chunk at 250 buckets
-
             chunk_size = 250
+
             for i in range(0, len(bucket_names), chunk_size):
                 chunk = bucket_names[i:i + chunk_size]
-
                 queries = []
                 for idx, b_name in enumerate(chunk):
-                    # Query for Bucket Size
                     queries.append({
                         'Id': f'size_{idx}',
                         'MetricStat': {
@@ -77,39 +92,36 @@ def collect_s3_buckets(session, account_id="unknown"):
                     })
 
                 try:
-                    response = cw.get_metric_data(
-                        MetricDataQueries=queries,
-                        StartTime=start_time,
-                        EndTime=now
-                    )
-
+                    response = cw.get_metric_data(MetricDataQueries=queries, StartTime=start_time, EndTime=now)
                     metrics_map = {res['Label']: (res['Values'][0] if res['Values'] else 0) for res in
                                    response['MetricDataResults']}
 
                     for b_name in chunk:
-                        size_val = metrics_map.get(f"{b_name}|size", 0)
-                        count_val = metrics_map.get(f"{b_name}|count", 0)
-
                         results.append({
                             "account_id": account_id,
                             "resource": "s3_bucket",
                             "region": region,
-                            "bucket_size_gb": round(size_val / (1024 ** 3), 2),
-                            "bucket_doc_num": int(count_val)
+                            "bucket_size_gb": round(metrics_map.get(f"{b_name}|size", 0) / (1024 ** 3), 2),
+                            "bucket_doc_num": int(metrics_map.get(f"{b_name}|count", 0))
                         })
                 except Exception:
                     for b_name in chunk:
-                        results.append({
-                            "account_id": account_id,
-                            "resource": "s3_bucket",
-                            "region": region,
-                            "bucket_size_gb": 0,
-                            "bucket_doc_num": 0
-                        })
+                        results.append(
+                            {"account_id": account_id, "resource": "s3_bucket", "region": region, "bucket_size_gb": 0,
+                             "bucket_doc_num": 0})
+
+        for b_name in skipped_buckets:
+            results.append({
+                "account_id": account_id,
+                "resource": "s3_bucket",
+                "region": "Unknown",
+                "bucket_size_gb": 0,
+                "bucket_doc_num": 0
+            })
 
     except Exception as e:
         if "AccessDenied" in str(e):
-            error = "s3:ListAllMyBuckets"
+            error = "s3:ListAllMyBuckets"  # Actionable feedback for customer
         else:
             error = str(e)
 
