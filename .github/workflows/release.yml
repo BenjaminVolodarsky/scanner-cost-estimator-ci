@@ -1,21 +1,13 @@
-name: Automated Release Engine
-
+name: Release
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      tag_latest:
-        description: 'Tag as latest release'
-        required: false
-        type: boolean
-        default: true
 
 permissions:
   contents: write
-  issues: write
   pull-requests: write
+  issues: write
 
 jobs:
   release:
@@ -37,9 +29,19 @@ jobs:
         with:
           extra_plugins: |
             @semantic-release/changelog
-            @semantic-release/git
+            conventional-changelog-conventionalcommits
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request with Changelog
+        if: steps.semantic-release.outputs.new_release_published == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(release): v${{ steps.semantic-release.outputs.new_release_version }} [skip ci]"
+          title: "chore(release): v${{ steps.semantic-release.outputs.new_release_version }}"
+          body: "This PR updates the CHANGELOG.md for the new version. Merge this to finalize the versioning."
+          branch: "release-v${{ steps.semantic-release.outputs.new_release_version }}"
 
       - name: Package Artifact
         if: steps.semantic-release.outputs.new_release_published == 'true'
@@ -48,18 +50,17 @@ jobs:
           mkdir -p dist
           cp main.py README.md requirements.txt dist/
           cp -r collectors output utils dist/
-          
-          ZIP_NAME="upwind-${NEW_TAG}.zip"
+          ZIP_NAME="aws-resource-inventory-${NEW_TAG}.zip"
           cd dist && zip -r ../$ZIP_NAME .
           echo "ZIP_PATH=$ZIP_NAME" >> $GITHUB_ENV
-          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
       - name: Upload to GitHub Release
         if: steps.semantic-release.outputs.new_release_published == 'true'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.NEW_TAG }}
+          tag_name: "v${{ steps.semantic-release.outputs.new_release_version }}"
           files: ${{ env.ZIP_PATH }}
-          generate_release_notes: true # Use notes from semantic-release
+          draft: true
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
