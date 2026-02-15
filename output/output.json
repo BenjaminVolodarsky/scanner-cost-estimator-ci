@@ -1,0 +1,1634 @@
+[
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 0
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.03,
+    "bucket_doc_num": 21931
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 24
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.01,
+    "bucket_doc_num": 172
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "eu-central-1",
+    "bucket_size_gb": 0.05,
+    "bucket_doc_num": 27840
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "eu-central-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "eu-central-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-2",
+    "bucket_size_gb": 0.06,
+    "bucket_doc_num": 28778
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 4
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-east-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-1",
+    "bucket_size_gb": 0.05,
+    "bucket_doc_num": 26972
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 2
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-2",
+    "bucket_size_gb": 0.07,
+    "bucket_doc_num": 51761
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "s3_bucket",
+    "region": "us-west-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 1
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 256
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "ec2",
+    "region": "us-east-1",
+    "instance_type": "t3.micro"
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "ebs",
+    "region": "us-east-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 8,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 256
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "ebs",
+    "region": "us-east-2",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 30,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "ebs",
+    "region": "us-east-2",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 30,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 256
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 256
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 256
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "905418450036",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "954405579287",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 0
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 0
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "ec2",
+    "region": "us-east-1",
+    "instance_type": "t2.small"
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "ec2",
+    "region": "us-east-1",
+    "instance_type": "t2.small"
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "ebs",
+    "region": "us-east-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 8,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "ebs",
+    "region": "us-east-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 20,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "ebs",
+    "region": "us-east-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 8,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "148290534338",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-2",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 138
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 51
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.53,
+    "bucket_doc_num": 67
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.01,
+    "bucket_doc_num": 373
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 117
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 6.88,
+    "bucket_doc_num": 297535
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 6.88,
+    "bucket_doc_num": 297481
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 92
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 6.92,
+    "bucket_doc_num": 299488
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "s3_bucket",
+    "region": "us-east-1",
+    "bucket_size_gb": 0.0,
+    "bucket_doc_num": 14
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-north-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "ebs",
+    "region": "eu-central-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 8,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "ebs",
+    "region": "eu-central-1",
+    "ebs_state": "in-use",
+    "ebs_size_gb": 8,
+    "ebs_type": "gp3"
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "eu-central-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "asg_ec2_equivalent",
+    "region": "eu-central-1",
+    "asg_instance_count": 2
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "asg_ec2_equivalent",
+    "region": "eu-central-1",
+    "asg_instance_count": 4
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "asg_ec2_equivalent",
+    "region": "eu-central-1",
+    "asg_instance_count": 10
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-east-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-1",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  },
+  {
+    "account_id": "590183912334",
+    "resource": "lambda",
+    "region": "us-west-2",
+    "function_memory_mb": 128
+  }
+]

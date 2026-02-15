@@ -242,7 +242,7 @@ Documentation & Updates:
             audit_report[acc['id']] = [error_msg]
             partial_count += 1
 
-    if len(audit_report) > 0 and len(audit_report) < 10:
+    if len(audit_report) > 0 and len(audit_report) < 1:
         print("\n" + "=" * 60)
         log_warn("Errors report", "SYSTEM")
         print("=" * 60)
@@ -252,7 +252,7 @@ Documentation & Updates:
             for issue in unique_issues:
                 print(f"  - {issue}")
         print("=" * 60 + "\n")
-    elif len(audit_report) >=10:
+    elif len(audit_report) >=1:
         name_map = {acc['id']: acc['name'] for acc in scan_list}
         audit_filename = "output/audit_report.txt"
 

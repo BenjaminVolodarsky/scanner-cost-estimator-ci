@@ -1,42 +1,64 @@
-name: Production Release Engine
+name: Automated Release Engine
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      tag_latest:
+        description: 'Tag as latest release'
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
-  build-and-release:
+  release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Semantic Release
+        id: semantic-release
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Package Artifact
+        if: steps.semantic-release.outputs.new_release_published == 'true'
         run: |
-          TAG=${{ github.ref_name }}
-          
+          NEW_TAG="v${{ steps.semantic-release.outputs.new_release_version }}"
           mkdir -p dist
-          cp upwind dist/ 2>/dev/null || :  # Copy if exists, ignore if not
-          cp main.py dist/
-          cp README.md dist/
-          cp requirements.txt dist/
-          cp -r collectors dist/
-          cp -r output dist/
-          cp -r utils dist/
+          cp main.py README.md requirements.txt dist/
+          cp -r collectors output utils dist/
           
-          ZIP_NAME="upwind-${TAG}.zip"
+          ZIP_NAME="upwind-${NEW_TAG}.zip"
           cd dist && zip -r ../$ZIP_NAME .
           echo "ZIP_PATH=$ZIP_NAME" >> $GITHUB_ENV
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
-      - name: Create GitHub Release
+      - name: Upload to GitHub Release
+        if: steps.semantic-release.outputs.new_release_published == 'true'
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ env.NEW_TAG }}
           files: ${{ env.ZIP_PATH }}
-          name: Release ${{ github.ref_name }}
-          generate_release_notes: true
-          draft: true
+          generate_release_notes: true # Use notes from semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
