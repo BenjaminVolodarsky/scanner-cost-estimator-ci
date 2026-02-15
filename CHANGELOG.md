@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci/compare/v1.2.0...v1.3.0) (2026-02-15)
+
+### Features
+
+* checking new ci process ([2ac0247](https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci/commit/2ac02472c5d5641a731109fd2baca13849d21dcc))
+
 ## [1.1.3](https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci/compare/v1.1.2...v1.1.3) (2026-02-15)
 
 
