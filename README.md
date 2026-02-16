@@ -2,7 +2,7 @@
 
 This tool inventories scannable AWS resources across an organization.
 
-
+d
 
 - Read-Only: All API calls are non-mutating and do not modify any resources.
 - AWS Native: No API calls are made outside of the AWS environment.
