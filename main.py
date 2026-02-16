@@ -177,8 +177,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Documentation & Updates:
-  GitHub: https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci
-  Releases: https://github.com/BenjaminVolodarsky/scanner-cost-estimator-ci/releases
+  GitHub: https://github.com/upwindsecurity/aws-resource-inventory
+  Releases: https://github.com/upwindsecurity/aws-resource-inventory/releases
         """
     )
     parser.add_argument("--role", type=str, default="OrganizationAccountAccessRole",
@@ -242,7 +242,7 @@ Documentation & Updates:
             audit_report[acc['id']] = [error_msg]
             partial_count += 1
 
-    if len(audit_report) > 0 and len(audit_report) < 1:
+    if len(audit_report) > 0 and len(audit_report) < 10:
         print("\n" + "=" * 60)
         log_warn("Errors report", "SYSTEM")
         print("=" * 60)
@@ -252,7 +252,7 @@ Documentation & Updates:
             for issue in unique_issues:
                 print(f"  - {issue}")
         print("=" * 60 + "\n")
-    elif len(audit_report) >=1:
+    elif len(audit_report) >=10:
         name_map = {acc['id']: acc['name'] for acc in scan_list}
         audit_filename = "output/audit_report.txt"
 

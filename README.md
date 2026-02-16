@@ -1,7 +1,7 @@
-# AWS Workload Cost Estimator
+# aws-resource-inventory
 
-This tool estimates the number of scannable AWS resources in an organization,  
-which can then be used for cost prediction and capacity planning.
+This tool inventories scannable AWS resources across an organization.
+
 
 
 - Read-Only: All API calls are non-mutating and do not modify any resources.
@@ -97,8 +97,8 @@ You may use either an AWS-managed or a customer-managed policy.
 # Installation
 
 ```bash
-git clone https://github.com/BenjaminVolodarsky/scanner-cost-estimator-dev.git
-cd scanner-cost-estimator-dev
+git clone https://github.com/upwindsecurity/aws-resource-inventory.git
+cd aws-resource-inventory
 ```
 * If boto3 is not already installed (e.g. outside CloudShell):
 ```bash
@@ -165,6 +165,11 @@ Specify which regions should be scanned across the selected accounts.
 ```bash
 ./upwind --region us-east-1,eu-west-1
 ```
+
+## Versioning
+
+We use [Semantic Versioning](https://semver.org/) for releases. For the versions
+available, see the [tags on this repository](https://github.com/upwindsecurity/aws-resource-inventory/tags).
 
 ## Troubleshooting:
 **_If runtime exceptions are detected in more than 10 accounts, a file named:_**
