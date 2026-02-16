@@ -33,12 +33,7 @@
     ],
     [
       "@semantic-release/github",
-      {
-        "draftRelease": true,
-        "assets": [
-          {"path": "aws-resource-inventory-*.zip", "label": "AWS Resource Inventory Distribution"}
-        ]
-      }
+      { "draftRelease": true }
     ]
   ]
 }
