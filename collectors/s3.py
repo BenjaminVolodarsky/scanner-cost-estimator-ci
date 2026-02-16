@@ -8,7 +8,7 @@ logger = logging.getLogger("CloudScanner")
 def collect_s3_buckets(session, account_id="unknown"):
     s3 = get_client(session, "s3")
     results = []
-    error = None # Will store 's3:ListAllMyBuckets' or 's3:ListBucket'
+    error = None
     buckets_by_region = {}
     skipped_buckets = []
     fetched_count = 0
@@ -27,7 +27,6 @@ def collect_s3_buckets(session, account_id="unknown"):
                     response = s3.head_bucket(Bucket=name)
                     region = response.get('ResponseMetadata', {}).get('HTTPHeaders', {}).get('x-amz-bucket-region')
                 except botocore.exceptions.ClientError as e:
-                    # Attempt to extract region from error headers
                     region = e.response.get('Error', {}).get('Region') or \
                              e.response.get('ResponseMetadata', {}).get('HTTPHeaders', {}).get('x-amz-bucket-region')
 
@@ -40,7 +39,6 @@ def collect_s3_buckets(session, account_id="unknown"):
                 else:
                     skipped_buckets.append(name)
 
-        # Only notify if there are actual skips
         if skipped_buckets:
             logger.info(
                 f"s3:HeadBucket failed to resolve {len(skipped_buckets)} regions (Fetched: {fetched_count}). "
@@ -49,7 +47,6 @@ def collect_s3_buckets(session, account_id="unknown"):
             )
             error = "s3:ListBucket"
 
-        # Step 2: Regional CloudWatch Queries
         for region, bucket_names in buckets_by_region.items():
             cw = get_client(session, "cloudwatch", region_name=region)
             chunk_size = 250
@@ -104,7 +101,9 @@ def collect_s3_buckets(session, account_id="unknown"):
                             "bucket_size_gb": round(metrics_map.get(f"{b_name}|size", 0) / (1024 ** 3), 2),
                             "bucket_doc_num": int(metrics_map.get(f"{b_name}|count", 0))
                         })
-                except Exception:
+                except Exception as e:
+                    if "AccessDenied" in str(e):
+                        error = "cloudwatch:GetMetricData"
                     for b_name in chunk:
                         results.append(
                             {"account_id": account_id, "resource": "s3_bucket", "region": region, "bucket_size_gb": 0,

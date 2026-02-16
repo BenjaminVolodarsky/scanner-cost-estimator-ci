@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
   pull-requests: write
@@ -48,7 +49,7 @@ jobs:
         run: |
           NEW_TAG="v${{ steps.semantic-release.outputs.new_release_version }}"
           mkdir -p dist
-          cp main.py README.md requirements.txt dist/
+          cp main.py upwind README.md requirements.txt dist/
           cp -r collectors output utils dist/
           ZIP_NAME="aws-resource-inventory-${NEW_TAG}.zip"
           cd dist && zip -r ../$ZIP_NAME .

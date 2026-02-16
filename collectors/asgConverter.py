@@ -9,7 +9,6 @@ def collect_asg_as_ec2_equivalent(session, region, account_id):
         paginator = client.get_paginator('describe_auto_scaling_groups')
         for page in paginator.paginate():
             for asg in page['AutoScalingGroups']:
-                # Skip inactive groups
                 if asg.get('DesiredCapacity', 0) == 0:
                     continue
 
