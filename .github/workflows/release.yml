@@ -7,7 +7,6 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -41,6 +40,8 @@ jobs:
           title: "chore(release): v${{ steps.semantic-release.outputs.new_release_version }}"
           body: "This PR updates the CHANGELOG.md for the new version. Merge this to finalize the versioning."
           branch: "release-v${{ steps.semantic-release.outputs.new_release_version }}"
+          labels: |
+            kind/release
 
       - name: Package Artifact
         if: steps.semantic-release.outputs.new_release_published == 'true'
